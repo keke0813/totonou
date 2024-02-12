@@ -1,0 +1,62 @@
+<%= form_with model: post_sauna do |f| %>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <label for="inputImage">サウナ画像</label><br>
+      <%= f.file_field :image, placeholder: "サウナ画像", accept: "image/*" %>
+    </li>
+    <li class="list-group-item">
+      <label for="inputName">サウナ名</label><br>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"サウナ名"%>
+    </li>
+    <li class="list-group-item">
+      <label for="inputAddress">所在地</label><br>
+      <%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"所在地"%>
+    </li>
+    <li class="list-group-item">
+      <label for="inputPrice">利用料金</label><br>
+      <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder:"利用料金"%>
+    </li>
+    <li class="list-group-item">
+      <label for="inputImpression">感想</label><br>
+      <%= f.text_area :impression, autofocus: true, id:"inputImpression", placeholder:"感想"%>
+    </li>
+    <li class="list-group-item">
+      <label for="inputCategory">カテゴリー</label><br>
+      <%= f.text_field :category, autofocus: true, id:"inputCategory", placeholder:"カテゴリー"%>
+    </li>
+    <li class="list-group-item">
+      <% if post_sauna.id.nil? %>
+        <div class="form-group" id="star">
+          <%= f.label :評価 %>
+          <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+          <div id="post_raty"></div>
+        </div>
+        <script>
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#post_raty');
+            if (elem == null) return;
+            elem.innerHTML = ""
+            let opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              scoreName: 'post_sauna[star]',
+            };
+            raty(elem, opt);
+          });
+        </script>
+      <% else %>
+        <div class="form-group">
+          <%= f.label :評価 %>
+          <%= render "static.rate", post_sauna: post_sauna %>
+        </div>
+      <% end %>
+    </li>
+  </ul>
+  <div class="card-body">
+    <% if post_sauna.new_record? %>
+      <%= f.submit '投稿する' %>
+    <% else %>
+      <%= f.submit '編集する' %>
+    <% end %>
+  </div>
+<% end %>

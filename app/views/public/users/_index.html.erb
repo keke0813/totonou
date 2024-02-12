@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th noWrap>ユーザーネーム</th>
+      <th></th>
+      <th noWrap>お気に入りドリンク</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% users.each do |user| %>
+    <tbody>
+      <tr>
+        <td noWrap><%= image_tag user.get_profile_image(100,100) %></td>
+        <td noWrap><%= link_to user.name, user_path(user) %></td>
+        <td noWrap><%= image_tag user.get_favorite_drink_image(100,100) %></td>
+        <td noWrap><%= user.favorite_drink %></td>
+        <td noWrap>フォロー数：<%= link_to user.followings.count, user_followings_path(user) %></td>
+        <td noWrap>フォロワー数：<%= link_to user.followers.count, user_followers_path(user)%></td>
+        <td noWrap><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+<%= paginate users %>

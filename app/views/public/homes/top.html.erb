@@ -1,0 +1,24 @@
+<div class="container text-center">
+  <div class="row mt-5">
+    <div class="col">
+      <h1>ととのう</h1>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <p>
+        ようこそ、「ととのう」へ！このサイトでは、全国各地のサウナを巡る冒険が始まります。<br>
+        あなたのお気に入りのサウナスポットを見つけ、共有しましょう。<br>
+        さらに、心地よいサウナ体験に欠かせないドリンクも、ユーザーの投稿から見つけることができます。
+      </p>
+    </div>
+  </div>
+  <div class="row d-flex flex-column mt-5">
+    <div class="col">
+      <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success w-25 my-2" %>
+    </div>
+    <div class="col">
+      <%= link_to "ログイン", new_user_session_path, class:"btn btn-success w-25 my-2" %>
+    </div>
+  </div>
+</div>

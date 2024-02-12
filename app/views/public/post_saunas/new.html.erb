@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <% if @post_sauna.errors.any? %>
+        <%= @post_sauna.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @post_sauna.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <div class="card text-center font-weight-bold">
+        <div class="card-header">
+          <h2>新規投稿画面</h2>
+        </div>
+        <%= render "form", post_sauna: @post_sauna %>
+      </div>
+    </div>
+  </div>
+</div>
