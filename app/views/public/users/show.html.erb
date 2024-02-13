@@ -1,5 +1,6 @@
 <div class="containar">
   <div class="row">
+
     <div class="col-md-3">
       <%= render 'info', user: @user %>
     </div>
@@ -16,7 +17,7 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">所在地：<%= post_sauna.address %></li>
-              <li class="list-group-item">利用価格：<%= post_sauna.price %>円</li>
+              <li class="list-group-item">利用料金：<%= post_sauna.price %>円</li>
               <li class="list-group-item">カテゴリー：<%=link_to post_sauna.category,tagsearches_search_path(content: post_sauna.category)%></li>
               <li class="list-group-item">評価：<%= render "public/post_saunas/static.rate", post_sauna: post_sauna %></li>
             </ul>

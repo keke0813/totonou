@@ -1,5 +1,6 @@
 <div class="containar">
   <div class="row">
+
     <div class="col-md-3">
       <%= render 'public/users/info', user: @user %>
     </div>
@@ -7,10 +8,11 @@
     <div class="col-md-9">
       <h4>フォロワー一覧</h4>
       <% if @users.exists? %>
-        <%= render 'public/users/index', users: @users %>
+        <%= render 'public/users/user.index', users: @users %>
       <% else %>
         <p>ユーザーはいません</p>
       <% end %>
     </div>
+
   </div>
 </div>
