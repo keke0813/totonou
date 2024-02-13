@@ -49,6 +49,17 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # 絞り込み機能
+  def self.search(search, word)
+    if search == "perfect_match"
+      @user = User.where(name: "#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?", "%#{word}%")
+    else
+      @user = User.all
+    end
+  end
+
   #バリデーション
 
 end

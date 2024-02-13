@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
     get "tagsearches/search" => "tagsearches#search"
+    get "searches/search" => "searches#search"
     get "users/information/edit/:id" => "users#edit", as: 'users_information_edit'
     patch "users/information/:id" => "users#update", as: 'users_information_update'
     resources :users, only: [:index, :show] do

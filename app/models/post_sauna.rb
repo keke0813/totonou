@@ -19,6 +19,17 @@ class PostSauna < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  # 絞り込み機能
+  def self.search(search, word)
+    if search == "perfect_match"
+      @post_sauna = PostSauna.where(name: "#{word}")
+    elsif search == "partial_match"
+      @post_sauna = PostSauna.where("name LIKE?", "%#{word}%")
+    else
+      @post_sauna = PostSauna.all
+    end
+  end
+
   #バリデーション
   validates :image, presence: true
   validates :name, presence: true
