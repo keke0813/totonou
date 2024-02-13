@@ -15,6 +15,9 @@
   </div>
   <div class="row d-flex flex-column mt-5">
     <div class="col">
+      <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class:"btn btn-success w-25 my-2", method: :post %>
+    </div>
+    <div class="col">
       <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success w-25 my-2" %>
     </div>
     <div class="col">

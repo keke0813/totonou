@@ -24,11 +24,13 @@
   </tr>
 </table>
 <div class="row d-flex flex-column">
-  <% if current_user != user %>
-    <%= render "public/relationships/btn", user: user, options: { class: ""} %>
-  <% else %>
+  <% if current_user == user %>
     <%= link_to "ユーザー情報編集", users_information_edit_path(user), class:"btn btn-success w-50 my-2 mx-5" %>
     <%= link_to "新規投稿", new_post_sauna_path, class:"btn btn-success w-50 my-2 mx-5" %>
+  <% elsif user.email == "guest@example.com" %>
+    <%= link_to "新規投稿", new_post_sauna_path, class:"btn btn-success w-50 my-2 mx-5" %>
+  <% else %>
+    <%= render "public/relationships/btn", user: user, options: { class: ""} %>
   <% end %>
 </div>
 
