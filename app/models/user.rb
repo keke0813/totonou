@@ -76,6 +76,19 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 
+  #ユーザーステータス管理
+  def user_status
+    if is_active == true
+      "有効"
+    else
+      "利用停止"
+    end
+  end
+
+  def active_for_authentication?
+    super && (is_active == true)
+  end
+
   #バリデーション
 
 end

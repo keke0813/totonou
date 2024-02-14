@@ -1,2 +1,8 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="containar">
+  <div class="row">
+    <div class="col">
+      <h4>ユーザー一覧</h4>
+      <%= render 'user.index', users: @users %>
+    </div>
+  </div>
+</div>

@@ -44,7 +44,13 @@
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-primary" %>
               </li>
-              <%= render 'tagsearches/tagsearch' %>
+              <li class="nav-item">
+                <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-primary" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "サウナ一覧", admin_post_saunas_path, class:"btn btn-primary" %>
+              </li>
+              <%= render 'admin/tagsearches/tagsearch' %>
               <% else %>
               <li class="nav-item">
                 <%= link_to "アバウト", about_path, class:"btn btn-primary mx-1" %>

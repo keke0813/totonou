@@ -1,2 +1,37 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card text-center font-weight-bold">
+        <div class="card-header">
+          <h2>ユーザー情報編集</h2>
+        </dv>
+        <%= form_with model: @user, url: admin_users_information_update_path(@user) do |f| %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <label>会員ID</label><br>
+              <%= @user.id %>
+            </li>
+            <li class="list-group-item">
+              <label for="inputName">名前</label><br>
+              <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+            </li>
+            <li class="list-group-item">
+              <label for="inputFavoriteDrink">お気に入りの飲み物</label><br>
+              <%= f.text_field :favorite_drink, autofocus: true, id:"inputFavoriteDrink", placeholder:"お気に入りの飲み物"%>
+            </li>
+            <li class="list-group-item">
+              <label>ステータス</label><br>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "有効", { value: :true } %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "利用停止", { value: :false } %>
+            </li>
+          </ul>
+          <div class="card-body">
+            <%= f.submit "編集する" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

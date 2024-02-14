@@ -22,7 +22,7 @@
               <li class="list-group-item">評価：<%= render "public/post_saunas/static.rate", post_sauna: post_sauna %></li>
             </ul>
             <div class="card-body">
-              <span><%= link_to "#{post_sauna.post_comments.count} コメント", post_sauna_path(post_sauna.id) %></span>
+              <span><%= link_to "コメント数：#{post_sauna.post_comments.count}", post_sauna_path(post_sauna.id) %></span>
             </div>
           </div>
         <% end %>
