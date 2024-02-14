@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :post_saunas, only: [:index, :show, :edit]
+    resources :post_saunas, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     get "tagsearches/search" => "tagsearches#search"
     patch "admin/users/information/:id" => "users#update", as: 'users_information_update'
     resources :users, only: [:index, :show, :edit] do

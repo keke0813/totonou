@@ -1,2 +1,53 @@
-<h1>Admin::PostSaunas#show</h1>
-<p>Find me in app/views/admin/post_saunas/show.html.erb</p>
+<div class="containar">
+  <div class="row">
+
+    <div class="col-md-3">
+      <%= render 'admin/users/info', user: @user %>
+    </div>
+
+    <div class="col-md-9">
+      <h4>サウナ詳細</h4>
+      <div class="card" style="width: 50rem;">
+        <%= image_tag @post_sauna.get_image %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @post_sauna.name %></h5>
+          <p class="card-text">感想：<%= @post_sauna.impression %></p>
+          <p class="card-text">投稿日：<%= @post_sauna.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">所在地：<%= @post_sauna.address %></li>
+          <li class="list-group-item">利用料金：<%= @post_sauna.price %>円</li>
+          <li class="list-group-item">カテゴリー：<%= link_to @post_sauna.category, admin_tagsearches_search_path(content:@post_sauna.category)%></li>
+          <li class="list-group-item">評価：<%= render "public/post_saunas/static.rate", post_sauna: @post_sauna %></li>
+        </ul>
+        <div class="card-body">
+          <div class="d-flex">
+            <p class="px-2">
+              ♥<%= @post_sauna.favorites.count %> いいね
+            </p>
+            <p class="px-2">コメント数：<%= @post_sauna.post_comments.count %></p>
+          </div>
+          <% @post_sauna.post_comments.each do |post_comment| %>
+            <div class="d-flex">
+                <div class="pe-3">
+                  <%= image_tag post_comment.user.get_profile_image(100,100) %>
+                  <p><%= link_to post_comment.user.name, admin_user_path(post_comment.user.id) %></p>
+                </div>
+                <div class="pt-4 px-3">
+                  <p><%= post_comment.comment %></p>
+                  <p>コメント日時：<%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+                </div>
+                <div class="pt-4 px-3">
+                  <%= link_to "コメント削除", admin_post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete %>
+                </div>
+            </div>
+          <% end %>
+          <div class="d-flex pt-3">
+            <p class="mx-3"><%= link_to "投稿削除", admin_post_sauna_path(@post_sauna), method: :delete, class:"btn btn-success" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
