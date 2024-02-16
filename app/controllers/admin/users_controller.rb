@@ -18,9 +18,20 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to admin_user_path(@user)
+      if @user.update(user_params)
+        flash[:notice] = "編集に成功しました。"
+        redirect_to admin_user_path(@user)
+      else
+        flash.now[:alert] = "編集に失敗しました。"
+        render :edit
+      end
   end
+
+  def liked_post_saunas
+    @user = User.find(params[:id])
+    @liked_post_saunas = PostSauna.liked_post_saunas(@user).page(params[:page])
+  end
+
 
   private
 

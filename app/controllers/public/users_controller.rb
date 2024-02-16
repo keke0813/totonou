@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
   #権限設定
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
     @users = User.page(params[:page])
@@ -19,8 +20,18 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+      if @user.update(user_params)
+        flash[:notice] = "編集に成功しました。"
+        redirect_to user_path(@user)
+      else
+        flash.now[:alert] = "編集に失敗しました。"
+        render :edit
+      end
+  end
+
+  def liked_post_saunas
+    @user = User.find(params[:id])
+    @liked_post_saunas = PostSauna.liked_post_saunas(@user).page(params[:page])
   end
 
   private
@@ -33,6 +44,13 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.guest_user?
       redirect_to user_path(current_user), notice: "ゲストユーザーはユーザー情報編集画面へ遷移できません"
+    end
+  end
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to post_saunas_path
     end
   end
 

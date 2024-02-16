@@ -54,9 +54,9 @@
   </ul>
   <div class="card-body">
     <% if post_sauna.new_record? %>
-      <%= f.submit '投稿する' %>
+      <%= f.submit '投稿する', class: "px-2" %>
     <% else %>
-      <%= f.submit '編集する' %>
+      <%= f.submit '編集する', class: "px-2" %>
     <% end %>
   </div>
 <% end %>

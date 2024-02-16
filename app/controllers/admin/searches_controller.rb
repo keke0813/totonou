@@ -1,7 +1,7 @@
-class Public::SearchesController < ApplicationController
+class Admin::SearchesController < ApplicationController
 
   #権限設定
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
 
   def search
     @range = params[:range]
@@ -14,4 +14,5 @@ class Public::SearchesController < ApplicationController
       @post_sauna = PostSauna.search(search, word).page(params[:page])
     end
   end
+
 end

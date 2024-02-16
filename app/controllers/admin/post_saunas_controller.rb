@@ -17,6 +17,7 @@ class Admin::PostSaunasController < ApplicationController
   def destroy
     post_sauna = PostSauna.find(params[:id])
     post_sauna.destroy
+    flash[:notice] = "削除に成功しました。"
     redirect_to admin_post_saunas_path
   end
 

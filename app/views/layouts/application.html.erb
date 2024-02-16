@@ -51,6 +51,12 @@
                 <%= link_to "サウナ一覧", admin_post_saunas_path, class:"btn btn-primary" %>
               </li>
               <%= render 'admin/tagsearches/tagsearch' %>
+              <%= form_tag(admin_searches_search_path, method: :get) do %>
+                <%= select_tag 'range', options_for_select([['---選択してください---', ''], ['ユーザー', '1'], ['サウナ', '2']]) %>
+                <%= select_tag 'search', options_for_select([["完全一致", "perfect_match"], ["部分一致", "partial_match"]]) %>
+                <%= text_field_tag (:word) %>
+                <%= submit_tag "検索" %>
+              <% end %>
               <% else %>
               <li class="nav-item">
                 <%= link_to "アバウト", about_path, class:"btn btn-primary mx-1" %>
@@ -68,6 +74,9 @@
       </nav>
     </header>
     <main class="mb-auto">
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
     </main>
     <footer class="bg-dark pt-5 pb-4">

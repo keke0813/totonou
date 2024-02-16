@@ -11,8 +11,10 @@ class Public::PostSaunasController < ApplicationController
     @post_sauna = PostSauna.new(post_sauna_params)
     @post_sauna.user_id = current_user.id
     if @post_sauna.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to post_sauna_path(@post_sauna)
     else
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -34,8 +36,10 @@ class Public::PostSaunasController < ApplicationController
   def update
     @post_sauna = PostSauna.find(params[:id])
     if @post_sauna.update(post_sauna_params)
+      flash[:notice] = "編集に成功しました。"
       redirect_to post_sauna_path(@post_sauna)
     else
+      flash.now[:alert] = "編集に失敗しました。"
       render :edit
     end
   end
@@ -43,6 +47,7 @@ class Public::PostSaunasController < ApplicationController
   def destroy
     post_sauna = PostSauna.find(params[:id])
     post_sauna.destroy
+    flash[:notice] = "削除に成功しました。"
     redirect_to post_saunas_path
   end
 

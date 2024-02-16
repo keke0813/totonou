@@ -1,0 +1,21 @@
+<!--サウナ一覧 -->
+<% if @range == '2' %>
+  <div class="containar">
+    <div class="row">
+      <div class="col">
+        <h4>サウナ一覧</h4>
+        <%= render "admin/post_saunas/post_sauna.index", post_saunas: @post_sauna %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <!--ユーザー一覧 -->
+  <div class="containar">
+    <div class="row">
+      <div class="col">
+        <h4>ユーザー一覧</h4>
+          <%= render 'admin/users/user.index', users: @user %>
+      </div>
+    </div>
+  </div>
+<% end %>

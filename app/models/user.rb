@@ -90,5 +90,7 @@ class User < ApplicationRecord
   end
 
   #バリデーション
-
+  validates :name,  length: { in: 1..50 }
+  validates :introduction, length: { in: 1..100 }
+  validates :favorite_drink, length: { in: 1..50 }
 end

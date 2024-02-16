@@ -11,8 +11,12 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:destroy]
     end
     get "tagsearches/search" => "tagsearches#search"
+    get "searches/search" => "searches#search"
     patch "admin/users/information/:id" => "users#update", as: 'users_information_update'
     resources :users, only: [:index, :show, :edit] do
+      member do
+        get :liked_post_saunas
+      end
       get "followings" => "relationships#followings", as: 'followings'
       get "followers" => "relationships#followers", as: 'followers'
     end
@@ -39,6 +43,9 @@ Rails.application.routes.draw do
     get "users/information/edit/:id" => "users#edit", as: 'users_information_edit'
     patch "users/information/:id" => "users#update", as: 'users_information_update'
     resources :users, only: [:index, :show] do
+      member do
+        get :liked_post_saunas
+      end
       resource :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: 'followings'
         get "followers" => "relationships#followers", as: 'followers'
