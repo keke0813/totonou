@@ -62,10 +62,10 @@
           </div>
           <div class="d-flex pt-3">
             <% if @post_sauna.user == current_user %>
-              <p><%= link_to "サウナ情報編集", edit_post_sauna_path, class:"btn btn-success" %></p>
+              <p><%= link_to "サウナ情報編集", edit_post_sauna_path, class:"btn btn-warning" %></p>
             <% end %>
             <% if @post_sauna.user == current_user %>
-              <p class="mx-3"><%= link_to "投稿削除", post_sauna_path(@post_sauna), method: :delete, class:"btn btn-success" %></p>
+              <p class="mx-3"><%= link_to "投稿削除", post_sauna_path(@post_sauna), method: :delete, class:"btn btn-danger" %></p>
             <% end %>
           </div>
         </div>

@@ -13,70 +13,77 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+          <%= link_to root_path do %>
+            <%= image_tag('logo.png', size: "60x60") %>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navgation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "マイページ", user_path(current_user.id), class:"btn btn-primary" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ユーザー一覧", users_path, class:"btn btn-primary" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "サウナ一覧", post_saunas_path, class:"btn btn-primary" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path,  method: :delete, class:"btn btn-primary" %>
-              </li>
-              <%= render 'public/tagsearches/tagsearch' %>
-              <%= form_tag(searches_search_path, method: :get) do %>
-                <%= select_tag 'range', options_for_select([['---選択してください---', ''], ['ユーザー', '1'], ['サウナ', '2']]) %>
-                <%= select_tag 'search', options_for_select([["完全一致", "perfect_match"], ["部分一致", "partial_match"]]) %>
-                <%= text_field_tag (:word) %>
-                <%= submit_tag "検索" %>
-              <% end %>
+                <li class="nav-item">
+                  <%= link_to "マイページ", user_path(current_user.id), class:"btn btn-success ml-4" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ユーザー一覧", users_path, class:"btn btn-success mx-2" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "サウナ一覧", post_saunas_path, class:"btn btn-success" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path,  method: :delete, class:"btn btn-success mx-2" %>
+                </li>
               <% elsif admin_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-primary" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-primary" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "サウナ一覧", admin_post_saunas_path, class:"btn btn-primary" %>
-              </li>
-              <%= render 'admin/tagsearches/tagsearch' %>
-              <%= form_tag(admin_searches_search_path, method: :get) do %>
-                <%= select_tag 'range', options_for_select([['---選択してください---', ''], ['ユーザー', '1'], ['サウナ', '2']]) %>
-                <%= select_tag 'search', options_for_select([["完全一致", "perfect_match"], ["部分一致", "partial_match"]]) %>
-                <%= text_field_tag (:word) %>
-                <%= submit_tag "検索" %>
-              <% end %>
+                <li class="nav-item">
+                  <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-success ml-4" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "サウナ一覧", admin_post_saunas_path, class:"btn btn-success mx-2" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-success" %>
+                </li>
               <% else %>
-              <li class="nav-item">
-                <%= link_to "アバウト", about_path, class:"btn btn-primary mx-1" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary mx-1" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ログイン", new_user_session_path, class:"btn btn-primary mx-1" %>
-              </li>
+                <li class="nav-item">
+                  <%= link_to "アバウト", about_path, class:"btn btn-success ml-4 " %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success mx-2" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_user_session_path, class:"btn btn-success" %>
+                </li>
               <% end %>
             </ul>
+            <% if user_signed_in? %>
+              <div class="ml-5">
+                <%= render 'public/tagsearches/tagsearch' %>
+                <%= form_tag(searches_search_path, method: :get, class:"d-flex") do %>
+                  <%= select_tag 'range', options_for_select([['---選択してください---', ''], ['ユーザー', '1'], ['サウナ', '2']]) %>
+                  <%= select_tag 'search', options_for_select([["完全一致", "perfect_match"], ["部分一致", "partial_match"]]) %>
+                  <%= text_field_tag (:word) %>
+                  <%= submit_tag "検索" %>
+                <% end %>
+              </div>
+            <% elsif admin_signed_in? %>
+              <div class="ml-5">
+                <%= render 'admin/tagsearches/tagsearch' %>
+                <%= form_tag(admin_searches_search_path, method: :get, class:"d-flex") do %>
+                  <%= select_tag 'range', options_for_select([['---選択してください---', ''], ['ユーザー', '1'], ['サウナ', '2']]) %>
+                  <%= select_tag 'search', options_for_select([["完全一致", "perfect_match"], ["部分一致", "partial_match"]]) %>
+                  <%= text_field_tag (:word) %>
+                  <%= submit_tag "検索" %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </nav>
     </header>
     <main class="mb-auto">
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
     <%= yield %>
     </main>
     <footer class="bg-dark pt-5 pb-4">
