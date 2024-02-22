@@ -8,10 +8,8 @@ class Admin::PostSaunasController < ApplicationController
   end
 
   def show
-    def show
-      @post_sauna = PostSauna.find(params[:id])
-      @user = @post_sauna.user
-    end
+    @post_sauna = PostSauna.find(params[:id])
+    @user = @post_sauna.user
   end
 
   def destroy
