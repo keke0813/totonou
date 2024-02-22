@@ -3,8 +3,12 @@
   <div class="containar">
     <div class="row">
       <div class="col">
-        <h4>サウナ一覧</h4>
-        <%= render "admin/post_saunas/post_sauna.index", post_saunas: @post_sauna %>
+        <h2>"<%= @word %>"の絞り込み検索結果一覧</h2>
+        <% if @post_sauna.exists? %>
+          <%= render "admin/post_saunas/post_sauna.index", post_saunas: @post_sauna %>
+        <% else %>
+          <p>※該当する投稿はまだありません<p>
+        <% end %>
       </div>
     </div>
   </div>
@@ -13,8 +17,12 @@
   <div class="containar">
     <div class="row">
       <div class="col">
-        <h4>ユーザー一覧</h4>
+        <h2>"<%= @word %>"の絞り込み検索結果一覧</h2>
+        <% if @user.exists? %>
           <%= render 'admin/users/user.index', users: @user %>
+        <% else %>
+          <p>※該当するユーザーはまだ登録されていません<p>
+        <% end %>
       </div>
     </div>
   </div>

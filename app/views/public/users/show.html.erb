@@ -6,25 +6,29 @@
     </div>
 
     <div class="col-md-9">
-      <h4><%= @user.name %>のサウナ一覧</h4>
+      <h2><%= @user.name %>のサウナ一覧</h2>
       <div class="d-flex flex-wrap">
-        <% @post_saunas.each do |post_sauna| %>
-          <div class="card" style="width: 19rem;">
-            <%= image_tag post_sauna.get_image %>
-            <div class="card-body">
-              <h5 class="card-title"><%= link_to post_sauna.name, post_sauna_path(post_sauna)%></h5>
-              <p class="card-text">感想：<%= post_sauna.impression %></p>
+        <% if @post_saunas.exists? %>
+          <% @post_saunas.each do |post_sauna| %>
+            <div class="card" style="width: 19rem;">
+              <%= image_tag post_sauna.get_image %>
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to post_sauna.name, post_sauna_path(post_sauna)%></h5>
+                <p class="card-text">感想：<%= post_sauna.impression %></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">所在地：<%= post_sauna.address %></li>
+                <li class="list-group-item">利用料金：<%= post_sauna.price %>円</li>
+                <li class="list-group-item">カテゴリー：<%=link_to post_sauna.category,tagsearches_search_path(content: post_sauna.category)%></li>
+                <li class="list-group-item">評価：<%= render "public/post_saunas/static.rate", post_sauna: post_sauna %></li>
+              </ul>
+              <div class="card-body">
+                <span><%= link_to "コメント数：#{post_sauna.post_comments.count}", post_sauna_path(post_sauna.id) %></span>
+              </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">所在地：<%= post_sauna.address %></li>
-              <li class="list-group-item">利用料金：<%= post_sauna.price %>円</li>
-              <li class="list-group-item">カテゴリー：<%=link_to post_sauna.category,tagsearches_search_path(content: post_sauna.category)%></li>
-              <li class="list-group-item">評価：<%= render "public/post_saunas/static.rate", post_sauna: post_sauna %></li>
-            </ul>
-            <div class="card-body">
-              <span><%= link_to "コメント数：#{post_sauna.post_comments.count}", post_sauna_path(post_sauna.id) %></span>
-            </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p>※投稿はまだありません<p>
         <% end %>
       </div>
       <%= paginate @post_saunas %>

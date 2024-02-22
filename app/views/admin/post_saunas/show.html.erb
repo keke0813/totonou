@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-md-9">
-      <h4>サウナ詳細</h4>
+      <h2>サウナ詳細</h2>
       <div class="card" style="width: 50rem;">
         <%= image_tag @post_sauna.get_image %>
         <div class="card-body">
@@ -38,12 +38,12 @@
                   <p>コメント日時：<%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
                 </div>
                 <div class="pt-4 px-3">
-                  <%= link_to "コメント削除", admin_post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete %>
+                  <%= link_to "コメント削除", admin_post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete, data: {confirm: "投稿を削除しますか？"} %>
                 </div>
             </div>
           <% end %>
           <div class="d-flex pt-3">
-            <p class="mx-3"><%= link_to "投稿削除", admin_post_sauna_path(@post_sauna), method: :delete, class:"btn btn-success" %></p>
+            <p class="mx-3"><%= link_to "投稿削除", admin_post_sauna_path(@post_sauna), method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-danger" %></p>
           </div>
         </div>
       </div>

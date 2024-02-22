@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-md-9">
-      <h4>サウナ詳細</h4>
+      <h2>サウナ詳細</h2>
       <div class="card" style="width: 50rem;">
         <%= image_tag @post_sauna.get_image %>
         <div class="card-body">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="pt-4 px-3">
                   <% if post_comment.user == current_user %>
-                    <%= link_to "コメント削除", post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete %>
+                    <%= link_to "コメント削除", post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete, data: {confirm: "コメントを削除しますか？"} %>
                   <% end %>
                 </div>
             </div>
@@ -65,7 +65,7 @@
               <p><%= link_to "サウナ情報編集", edit_post_sauna_path, class:"btn btn-warning" %></p>
             <% end %>
             <% if @post_sauna.user == current_user %>
-              <p class="mx-3"><%= link_to "投稿削除", post_sauna_path(@post_sauna), method: :delete, class:"btn btn-danger" %></p>
+              <p class="mx-3"><%= link_to "投稿削除", post_sauna_path(@post_sauna), method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-danger" %></p>
             <% end %>
           </div>
         </div>

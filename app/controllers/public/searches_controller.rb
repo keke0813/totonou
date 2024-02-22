@@ -5,13 +5,13 @@ class Public::SearchesController < ApplicationController
 
   def search
     @range = params[:range]
-    search = params[:search]
-    word = params[:word]
+    @search = params[:search]
+    @word = params[:word]
 
     if @range == '1'
-      @user = User.search(search, word).page(params[:page])
+      @user = User.search(@search, @word).page(params[:page])
     else
-      @post_sauna = PostSauna.search(search, word).page(params[:page])
+      @post_sauna = PostSauna.search(@search, @word).page(params[:page])
     end
   end
 end

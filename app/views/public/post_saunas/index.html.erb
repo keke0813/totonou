@@ -6,8 +6,12 @@
     </div>
 
     <div class="col-md-9">
-      <h4>サウナ一覧</h4>
-      <%= render "post_sauna.index", post_saunas: @post_saunas %>
+      <h2>サウナ一覧</h2>
+      <% if @post_saunas.exists? %>
+        <%= render "post_sauna.index", post_saunas: @post_saunas %>
+      <% else %>
+        <p>※投稿はまだありません<p>
+      <% end %>
     </div>
 
   </div>

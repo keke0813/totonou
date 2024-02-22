@@ -15,8 +15,16 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
         <div class="container-fluid">
-          <%= link_to root_path do %>
+          <% if user_signed_in? %>
+            <%= link_to root_path do %>
+              <%= image_tag('logo.png', size: "60x60") %>
+            <% end %>
+          <% elsif admin_signed_in? %>
             <%= image_tag('logo.png', size: "60x60") %>
+          <% else %>
+            <%= link_to root_path do %>
+              <%= image_tag('logo.png', size: "60x60") %>
+            <% end %>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navgation">
             <span class="navbar-toggler-icon"></span>
