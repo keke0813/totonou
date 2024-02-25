@@ -19,7 +19,7 @@
         <td noWrap><%= user.favorite_drink %></td>
         <td noWrap>フォロー数：<%= link_to user.followings.count, user_followings_path(user) %></td>
         <td noWrap>フォロワー数：<%= link_to user.followers.count, user_followers_path(user)%></td>
-        <td noWrap><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
+        <td noWrap><%= render "public/relationships/btn", user: user, options: { class: "btn btn-primary" } %></td>
       </tr>
     </tbody>
   <% end %>

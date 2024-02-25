@@ -23,7 +23,9 @@
         <div class="card-body">
           <div class="d-flex">
             <p class="px-2">
-              ♥<%= @post_sauna.favorites.count %> いいね
+              <i class="fa-solid fa-heart text-danger">
+                <%= @post_sauna.favorites.count %> いいね
+              </i>
             </p>
             <p class="px-2">コメント数：<%= @post_sauna.post_comments.count %></p>
           </div>
@@ -38,7 +40,7 @@
                   <p>コメント日時：<%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
                 </div>
                 <div class="pt-4 px-3">
-                  <%= link_to "コメント削除", admin_post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete, data: {confirm: "投稿を削除しますか？"} %>
+                  <%= link_to "コメント削除", admin_post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-danger" %>
                 </div>
             </div>
           <% end %>

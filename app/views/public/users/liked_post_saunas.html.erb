@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-md-9">
-      <h2><%= @user.name %>のいいね投稿一覧</h2>
+      <h2>"<%= @user.name %>"いいね投稿一覧</h2>
       <div class="d-flex flex-wrap">
         <% if @liked_post_saunas.exists? %>
           <% @liked_post_saunas.each do |post_sauna| %>

@@ -8,7 +8,7 @@
       </div>
 
       <div class="col-md-9">
-        <h2>"<%= @word %>"の絞り込み検索結果一覧</h2>
+        <h2>"<%= @word %>"絞り込み検索結果一覧</h2>
         <% if @post_sauna.exists? %>
           <%= render "public/post_saunas/post_sauna.index", post_saunas: @post_sauna %>
         <% else %>
@@ -28,7 +28,7 @@
       </div>
 
       <div class="col-md-9">
-        <h2>"<%= @word %>"の絞り込み検索結果一覧</h2>
+        <h2>"<%= @word %>"絞り込み検索結果一覧</h2>
         <% if @user.exists? %>
           <%= render 'public/users/user.index', users: @user %>
         <% else %>
