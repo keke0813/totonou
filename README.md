@@ -24,7 +24,12 @@
 ・ 自分のお気に入りの場所、ドリンクを投稿する時
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+- UI Flows(https://drive.google.com/file/d/1jcIPFkEL_0u8wqz4fyi_8jd5RdSBMx1x/view?usp=sharing)
+- ワイヤーフレーム(https://drive.google.com/file/d/1v-E2fZTJV2H7w_FLV73dsdxU1pGS7Tcm/view?usp=sharing)
+- ER図(https://drive.google.com/file/d/18VZr2b4lu54KC4FKpWO_ZM2vbTdRcji8/view?usp=sharing)
+- テーブル定義書(https://docs.google.com/spreadsheets/d/1LX1chKxzu2S9Ga-iJr0I-2aiKZZKraiP/edit?usp=sharing&ouid=108042198103623153817&rtpof=true&sd=true)
+- アプリケーション詳細設計書(https://docs.google.com/spreadsheets/d/1ErYdBq8A60lgeVB9GFt5Esa2IWF4CPCk9uyRcHTg9T4/edit?usp=sharing)
+- テスト仕様書(https://docs.google.com/spreadsheets/d/1uvze7Wc1vON8nAj3nb_K76EJ1mK3vSpG/edit?usp=sharing&ouid=108042198103623153817&rtpof=true&sd=true)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -34,4 +39,6 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-- 「著作権を考慮し、架空のデータを扱う予定です。なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します」
+- フリー素材として以下を使用
+
+  〇写真AC（https://www.photo-ac.com/）
