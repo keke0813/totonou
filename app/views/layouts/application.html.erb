@@ -93,7 +93,10 @@
       </nav>
     </header>
     <main class="mb-auto">
-    <%= yield %>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
     </main>
     <footer class="bg-dark pt-5 pb-4">
     </footer>
