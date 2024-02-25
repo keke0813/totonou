@@ -8,7 +8,7 @@
     <div class="col-md-9">
       <h2><%= @user.name %>のいいねした投稿一覧</h2>
       <div class="d-flex flex-wrap">
-        <% if @post_saunas.exists? %>
+        <% if @liked_post_saunas.exists? %>
           <% @liked_post_saunas.each do |post_sauna| %>
             <div class="card" style="width: 19rem;">
               <%= image_tag post_sauna.get_image %>

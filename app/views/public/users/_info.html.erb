@@ -3,7 +3,7 @@
 <%= image_tag user.get_favorite_drink_image(100,100) %>
 <table class="table">
   <tr>
-    <td>ユーザーネーム</td>
+    <td noWrap>ユーザーネーム</td>
     <td><%= link_to user.name, user_path(user) %></td>
   </tr>
   <tr>
@@ -28,9 +28,6 @@
     <%= link_to "ユーザー情報編集", users_information_edit_path(user), class:"btn btn-primary w-50 my-2 mx-5" %>
     <%= link_to "新規投稿", new_post_sauna_path, class:"btn btn-primary w-50 my-2 mx-5" %>
     <%= link_to "いいね一覧", liked_post_saunas_user_path(current_user), class:"btn btn-primary w-50 my-2 mx-5" %>
-  <% elsif user.email == "guest@example.com" %>
-    <%= link_to "新規投稿", new_post_sauna_path, class:"btn btn-primary w-50 my-2 mx-5" %>
-    <%= link_to "いいね一覧", liked_post_saunas_user_path(user), class:"btn btn-primary w-50 my-2 mx-5" %>
   <% else %>
     <%= render "public/relationships/btn", user: user, options: { class: ""} %>
     <%= link_to "いいね一覧", liked_post_saunas_user_path(user), class:"btn btn-primary w-50 my-2 mx-5" %>
