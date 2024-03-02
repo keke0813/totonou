@@ -74,9 +74,22 @@ PostSauna.find_or_create_by!(name: "スチーム・オアシス") do |post_sauna
 end
 
 #コメント作成
-PostComment.find_or_create_by!(comment: "素敵なサウナ体験ですね!", user: james, post_sauna: PostSauna.find_by(name: "蒸気の楽園"))
-PostComment.find_or_create_by!(comment: "この施設はきれいでしたか？", user: lucas, post_sauna: PostSauna.find_by(name: "温泉サファリ"))
-PostComment.find_or_create_by!(comment: "最高のリラックス感があります！", user: olivia, post_sauna: PostSauna.find_by(name: "スチーム・オアシス"))
+PostComment.find_or_create_by!(post_sauna: PostSauna.find_by(name: "蒸気の楽園")) do |post_comment|
+  post_comment.user = james
+  post_comment.comment = "素敵なサウナ体験ですね!"
+  post_comment.score = Language.get_data(post_comment.comment)
+end
+PostComment.find_or_create_by!(post_sauna: PostSauna.find_by(name: "温泉サファリ")) do |post_comment|
+  post_comment.user = lucas
+  post_comment.comment = "この施設はきれいでしたか？"
+  post_comment.score = Language.get_data(post_comment.comment)
+end
+PostComment.find_or_create_by!(post_sauna: PostSauna.find_by(name: "スチーム・オアシス")) do |post_comment|
+  post_comment.user = olivia
+  post_comment.comment = "最高のリラックス感があります！"
+  post_comment.score = Language.get_data(post_comment.comment)
+end
+
 
 # いいね作成
 Favorite.find_or_create_by!(user: olivia, post_sauna: PostSauna.find_by(name: "蒸気の楽園"))

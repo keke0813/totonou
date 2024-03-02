@@ -41,6 +41,9 @@
                 <div class="pt-4 px-3">
                   <p><%= post_comment.comment %></p>
                   <p>コメント日時：<%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+                  <i class="fa-solid fa-chart-simple text-success">
+                    <span class="sentiment-score">[<%= post_comment.score %>]</span>
+                  </i>
                 </div>
                 <div class="pt-4 px-3">
                   <%= link_to "コメント削除", admin_post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete, data: {confirm: "コメントを削除しますか？"}, class:"btn btn-danger" %>
