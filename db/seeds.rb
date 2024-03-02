@@ -48,6 +48,7 @@ PostSauna.find_or_create_by!(name: "蒸気の楽園") do |post_sauna|
   post_sauna.category = "ドライサウナ"
   post_sauna.star = 3
   post_sauna.user = olivia
+  post_sauna.score = Language.get_data(post_sauna.impression)
 end
 
 PostSauna.find_or_create_by!(name: "温泉サファリ") do |post_sauna|
@@ -58,6 +59,7 @@ PostSauna.find_or_create_by!(name: "温泉サファリ") do |post_sauna|
   post_sauna.category = "ミストサウナ"
   post_sauna.star = 2
   post_sauna.user = james
+  post_sauna.score = Language.get_data(post_sauna.impression)
 end
 
 PostSauna.find_or_create_by!(name: "スチーム・オアシス") do |post_sauna|
@@ -68,6 +70,7 @@ PostSauna.find_or_create_by!(name: "スチーム・オアシス") do |post_sauna
   post_sauna.category = "塩サウナ"
   post_sauna.star = 5
   post_sauna.user = lucas
+  post_sauna.score = Language.get_data(post_sauna.impression)
 end
 
 #コメント作成

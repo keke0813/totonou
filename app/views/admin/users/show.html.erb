@@ -15,6 +15,9 @@
               <div class="card-body">
                 <h5 class="card-title"><%= link_to post_sauna.name, admin_post_sauna_path(post_sauna)%></h5>
                 <p class="card-text">感想：<%= post_sauna.impression %></p>
+                <i class="fa-solid fa-chart-simple text-success">
+                  <span class="sentiment-score">[<%= post_sauna.score %>]</span>
+                </i>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">所在地：<%= post_sauna.address %></li>

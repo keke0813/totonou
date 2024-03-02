@@ -9,6 +9,7 @@ class Public::PostSaunasController < ApplicationController
 
   def create
     @post_sauna = PostSauna.new(post_sauna_params)
+    @post_sauna.score = Language.get_data(post_sauna_params[:impression])
     @post_sauna.user_id = current_user.id
     if @post_sauna.save
       flash[:notice] = "投稿に成功しました。"
