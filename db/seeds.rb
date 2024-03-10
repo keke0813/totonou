@@ -53,9 +53,9 @@ end
 
 PostSauna.find_or_create_by!(name: "温泉サファリ") do |post_sauna|
   post_sauna.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg")
-  post_sauna.address = "シミュレート県アドベンチャー市冒険町7-8-9"
+  post_sauna.address = "サウナ県アドベンチャー市冒険町7-8-9"
   post_sauna.price = "800"
-  post_sauna.impression = "整えました。"
+  post_sauna.impression = "お風呂が少し狭かったです。"
   post_sauna.category = "ミストサウナ"
   post_sauna.star = 2
   post_sauna.user = james
@@ -76,7 +76,7 @@ end
 #コメント作成
 PostComment.find_or_create_by!(post_sauna: PostSauna.find_by(name: "蒸気の楽園")) do |post_comment|
   post_comment.user = james
-  post_comment.comment = "素敵なサウナ体験ですね!"
+  post_comment.comment = "少し狭いように感じました"
   post_comment.score = Language.get_data(post_comment.comment)
 end
 PostComment.find_or_create_by!(post_sauna: PostSauna.find_by(name: "温泉サファリ")) do |post_comment|
