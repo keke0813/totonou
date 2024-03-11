@@ -5,16 +5,18 @@ class Public::PostCommentsController < ApplicationController
 
   def create
     post_sauna = PostSauna.find(params[:post_sauna_id])
-    comment = current_user.post_comments.new(post_comment_params)
-    comment.score = Language.get_data(post_comment_params[:comment])
-    comment.post_sauna_id = post_sauna.id
-    comment.save
-    redirect_to post_sauna_path(post_sauna)
+    @comment = current_user.post_comments.new(post_comment_params)
+    @comment.score = Language.get_data(post_comment_params[:comment])
+    @comment.post_sauna_id = post_sauna.id
+    @comment.save
+    #redirect_to post_sauna_path(post_sauna)
   end
 
   def destroy
-    PostComment.find(params[:id]).destroy
-    redirect_to post_sauna_path(params[:post_sauna_id])
+    post_sauna = PostSauna.find(params[:post_sauna_id])
+    @comment = PostComment.find(params[:id]).destroy
+    @comment.destroy
+    #redirect_to post_sauna_path(params[:post_sauna_id])
   end
 
   private

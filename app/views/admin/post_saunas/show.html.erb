@@ -30,36 +30,13 @@
                 <%= @post_sauna.favorites.count %> いいね
               </i>
             </p>
-            <p class="px-2">コメント数：<%= @post_sauna.post_comments.count %></p>
-          </div>
-          <% @post_sauna.post_comments.each do |post_comment| %>
-            <div class="d-flex">
-                <div class="pe-3">
-                  <%= image_tag post_comment.user.get_profile_image(100,100) %>
-                  <p><%= link_to post_comment.user.name, admin_user_path(post_comment.user.id) %></p>
-                </div>
-                <div class="pt-4 px-3">
-                  <p><%= post_comment.comment %></p>
-                  <p>コメント日時：<%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
-                  <% if post_comment.score < 0 %>
-                    <i class="fa-solid fa-chart-simple text-warning">
-                      <span class="sentiment-score">[<%= post_comment.score %>]</span>
-                    </i>
-                  <% elsif post_comment.score > 0 %>
-                    <i class="fa-solid fa-chart-simple text-success">
-                      <span class="sentiment-score">[<%= post_comment.score %>]</span>
-                    </i>
-                  <% else %>
-                    <i class="fa-solid fa-chart-simple text-secondary">
-                      <span class="sentiment-score">[<%= post_comment.score %>]</span>
-                    </i>
-                  <% end %>
-                </div>
-                <div class="pt-4 px-3">
-                  <%= link_to "コメント削除", admin_post_sauna_post_comment_path(post_comment.post_sauna, post_comment), method: :delete, data: {confirm: "コメントを削除しますか？"}, class:"btn btn-danger" %>
-                </div>
+            <div id="comment_counter">
+              <%= render "public/post_comments/counter", post_sauna: @post_sauna %>
             </div>
-          <% end %>
+          </div>
+          <div id="comment_index">
+            <%= render "admin/post_comments/index", post_sauna: @post_sauna %>
+          </div>
           <div class="d-flex pt-3">
             <p class="mx-3"><%= link_to "投稿削除", admin_post_sauna_path(@post_sauna), method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-danger" %></p>
           </div>

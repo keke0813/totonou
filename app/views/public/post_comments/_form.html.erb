@@ -1,0 +1,4 @@
+<%= form_with model: [post_sauna, post_comment], local: false do |f| %>
+  <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに", id: "comment_textarea" %><br>
+  <%= f.submit "送信する" %>
+<% end %>

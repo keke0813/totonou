@@ -1,0 +1,7 @@
+var confirmation = confirm("コメントを削除しますか？");
+if (confirmation) {
+  $('#comment_counter').html("<%= j(render 'public/post_comments/counter', post_sauna: @comment.post_sauna) %>");
+  $('#comment_index').html("<%= j(render 'public/post_comments/index', post_sauna: @comment.post_sauna) %>");
+} else {
+  // キャンセルされた場合の処理（例えば、何もしないか、必要に応じて他の処理を追加）
+}

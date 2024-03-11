@@ -4,8 +4,10 @@ class Admin::PostCommentsController < ApplicationController
   before_action :authenticate_admin!
 
   def destroy
-    PostComment.find(params[:id]).destroy
-    redirect_to admin_post_sauna_path(params[:post_sauna_id])
+    post_sauna = PostSauna.find(params[:post_sauna_id])
+    @comment = PostComment.find(params[:id]).destroy
+    @comment.destroy
+    #redirect_to post_sauna_path(params[:post_sauna_id])
   end
 
 end

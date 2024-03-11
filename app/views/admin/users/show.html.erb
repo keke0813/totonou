@@ -35,8 +35,15 @@
                 <li class="list-group-item">カテゴリー：<%=link_to post_sauna.category, admin_tagsearches_search_path(content: post_sauna.category)%></li>
                 <li class="list-group-item">評価：<%= render "public/post_saunas/static.rate", post_sauna: post_sauna %></li>
               </ul>
-              <div class="card-body">
-                <span><%= link_to "コメント数：#{post_sauna.post_comments.count}", admin_post_sauna_path(post_sauna.id) %></span>
+              <div class="card-body d-flex">
+                <p class="px-2">
+                  <i class="fa-solid fa-heart text-danger">
+                    <%= post_sauna.favorites.count %> いいね
+                  </i>
+                </p>
+                <div id="comment_counter">
+                  <%= render "public/post_comments/counter", post_sauna: @post_sauna %>
+                </div>
               </div>
             </div>
           <% end %>
