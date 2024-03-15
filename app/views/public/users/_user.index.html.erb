@@ -1,25 +1,26 @@
 <table class="table">
   <thead>
-    <tr>
+    <tr noWrap>
       <th></th>
-      <th noWrap>ユーザーネーム</th>
+      <th>ユーザーネーム</th>
       <th></th>
-      <th noWrap>お気に入りドリンク</th>
-      <th></th>
+      <th>お気に入りドリンク</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <% users.each do |user| %>
     <tbody>
-      <tr>
-        <td noWrap><%= image_tag user.get_profile_image(100,100) %></td>
-        <td noWrap><%= link_to user.name, user_path(user) %></td>
-        <td noWrap><%= image_tag user.get_favorite_drink_image(100,100) %></td>
-        <td noWrap><%= user.favorite_drink %></td>
-        <td noWrap>フォロー数：<%= link_to user.followings.count, user_followings_path(user) %></td>
-        <td noWrap>フォロワー数：<%= link_to user.followers.count, user_followers_path(user)%></td>
-        <td noWrap><%= render "public/relationships/btn", user: user, options: { class: "btn btn-primary" } %></td>
+      <tr noWrap>
+        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= image_tag user.get_favorite_drink_image(100,100) %></td>
+        <td><%= user.favorite_drink %></td>
+        <td>
+          フォロー数：<%= link_to user.followings.count, user_followings_path(user) %><br>
+          フォロワー数：<%= link_to user.followers.count, user_followers_path(user)%>
+        </td>
+        <td><%= render "public/relationships/btn", user: user, options: { class: "btn btn-primary" } %></td>
       </tr>
     </tbody>
   <% end %>
