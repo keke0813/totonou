@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap">
   <% post_saunas.each do |post_sauna| %>
     <div class="card" style="width: 19rem;">
-      <%= image_tag post_sauna.get_image, height: "200px" %>
+      <%= image_tag post_sauna.get_image, class: "index-img" %>
       <div class="card-body">
         <h5 class="card-title"><%= link_to post_sauna.name, post_sauna_path(post_sauna)%></h5>
         <p class="card-text">感想：<%= post_sauna.impression %></p>
